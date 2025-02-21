@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20230324/MODEL/" expressionLanguage="https://www.omg.org/spec/DMN/20230324/FEEL/" namespace="https://kie.org/dmn/_A0A1E769-A183-4183-BD0F-A7F3430C6837" id="_BA4FABEA-DC9D-4F50-8B9B-9886C7D2C177" name="DMN_11A923EE-604C-4D5B-BF91-AACE7F519B5D" xmlns:dmndi="https://www.omg.org/spec/DMN/20230324/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" xmlns:kie="https://kie.org/dmn/extensions/1.0">
+  <inputData name="Employees" id="_FC3B7BA2-8730-426B-BCCA-3D92775C3F38">
+    <variable name="Employees" id="_03ED04D1-110F-466F-A304-E2B055B4A1A5" />
+  </inputData>
+  <inputData name="Office" id="_25010DFA-8B60-4D75-89D2-1F3E455B1536">
+    <variable name="Office" id="_C9D0A6DE-3812-4843-898F-AF3F1414C373" />
+  </inputData>
+  <inputData name="Incoming Call" id="_75A121DC-F025-433D-92A3-F2FFE557FF54">
+    <variable name="Incoming Call" id="_461CDBA0-57BF-4AAF-AFEF-B029BD9FFB02" />
+  </inputData>
+  <decision name="Accept Call" id="_5891659F-F0DC-4801-970F-7E592F5E8B09">
+    <variable name="Accept Call" id="_FA0A3E9A-34DF-43E3-8D63-5C3DDC8F47D3" />
+    <informationRequirement id="_455A7CB3-4A76-4BF0-B672-547E9A1CA3DB">
+      <requiredInput href="#_75A121DC-F025-433D-92A3-F2FFE557FF54" />
+    </informationRequirement>
+    <informationRequirement id="_3CA16DB4-B697-4B13-8A07-42DC58627633">
+      <requiredInput href="#_25010DFA-8B60-4D75-89D2-1F3E455B1536" />
+    </informationRequirement>
+    <informationRequirement id="_AFB3F6EE-4479-448F-B19D-D0F6A7C6FC24">
+      <requiredInput href="#_FC3B7BA2-8730-426B-BCCA-3D92775C3F38" />
+    </informationRequirement>
+  </decision>
+  <inputData name="Call" id="_3CBA778C-F6A5-4CA2-BD61-248A1FEE08BF">
+    <variable name="Call" id="_01AE219B-E8F2-40AF-8EEF-B9E4D330E4CF" />
+  </inputData>
+  <decision name="Call Purpose accepted" id="_5436E7B0-D919-4167-AA67-20A7E30F6AA9">
+    <variable name="Call Purpose accepted" id="_F98FCB69-28B1-4458-8FC1-9DE9ACC1193E" />
+    <informationRequirement id="_7EEF26EF-5DA2-41DD-9B6C-F5D9C426A785">
+      <requiredInput href="#_3CBA778C-F6A5-4CA2-BD61-248A1FEE08BF" />
+    </informationRequirement>
+  </decision>
+  <decision name="is Banned" id="_BB114E0A-F8F8-4000-92DC-4D919FC077BE">
+    <variable name="is Banned" id="_7842DD4D-4E7D-4B01-AEE3-6862036328A4" />
+    <informationRequirement id="_6D8B5F1D-94CA-4464-A442-57169EDDC036">
+      <requiredInput href="#_3CBA778C-F6A5-4CA2-BD61-248A1FEE08BF" />
+    </informationRequirement>
+    <informationRequirement id="_42ECE64F-3E45-4DC6-851A-18E62421FDE0">
+      <requiredDecision href="#_E9425094-1DF5-4DDF-A860-FCE9B3ECAA89" />
+    </informationRequirement>
+  </decision>
+  <decision name="Banned phone number" id="_E9425094-1DF5-4DDF-A860-FCE9B3ECAA89">
+    <variable name="Banned phone number" id="_1E062D4B-817B-4381-90B0-C058C2A22499" />
+  </decision>
+  <decision name="Call can be handled" id="_F2DF384E-C316-4B5F-9E89-8F480470EC38">
+    <variable name="Call can be handled" id="_93559837-85EE-4316-A357-AF45C0A7F782" />
+    <informationRequirement id="_061B6593-EC9B-4A9C-99C1-1E53AFB2B0BC">
+      <requiredDecision href="#_BB114E0A-F8F8-4000-92DC-4D919FC077BE" />
+    </informationRequirement>
+    <informationRequirement id="_613DB6F8-55F5-46FD-A614-D4B13D9D5D9E">
+      <requiredDecision href="#_5436E7B0-D919-4167-AA67-20A7E30F6AA9" />
+    </informationRequirement>
+  </decision>
+  <group id="_DA453187-CA1F-4DE3-82F2-1DCB9CB05D57" name="Can Handle Call" />
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram id="_6CAF0FE4-5C9B-4610-B557-36AE2879D519" name="Default DRD" useAlternativeInputDataShape="false">
+      <di:extension>
+        <kie:ComponentsWidthsExtension>
+          <kie:ComponentWidths />
+        </kie:ComponentsWidthsExtension>
+      </di:extension>
+      <dmndi:DMNShape id="_86C39319-EB1D-4C97-8C73-6718C6FB5CC3" dmnElementRef="_DA453187-CA1F-4DE3-82F2-1DCB9CB05D57" isCollapsed="false" isListedInputData="false">
+        <dc:Bounds x="40" y="220" width="680" height="360" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="_4B645663-D617-44B2-B190-742E75858A71" dmnElementRef="_F2DF384E-C316-4B5F-9E89-8F480470EC38" isCollapsed="false" isListedInputData="false">
+        <dc:Bounds x="380" y="280" width="160" height="80" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="_44002254-08B1-4F05-97D2-587E895CC50B" dmnElementRef="_E9425094-1DF5-4DDF-A860-FCE9B3ECAA89" isCollapsed="false" isListedInputData="false">
+        <dc:Bounds x="80" y="440" width="160" height="80" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="_7B2AC677-4804-4D26-BFC5-33F1D1F34662" dmnElementRef="_BB114E0A-F8F8-4000-92DC-4D919FC077BE" isCollapsed="false" isListedInputData="false">
+        <dc:Bounds x="300" y="440" width="160" height="80" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="_7A4A695A-3659-4324-A177-4790EC66E893" dmnElementRef="_5436E7B0-D919-4167-AA67-20A7E30F6AA9" isCollapsed="false" isListedInputData="false">
+        <dc:Bounds x="500" y="440" width="160" height="80" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="_06ED39BD-D2BA-4707-8D48-2F3A39867861" dmnElementRef="_3CBA778C-F6A5-4CA2-BD61-248A1FEE08BF" isCollapsed="false" isListedInputData="false">
+        <dc:Bounds x="460" y="600" width="160" height="80" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="_1EBDC89E-47D9-4F80-8056-5B38D87145B6" dmnElementRef="_5891659F-F0DC-4801-970F-7E592F5E8B09" isCollapsed="false" isListedInputData="false">
+        <dc:Bounds x="1020" y="420" width="160" height="80" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="_177A507C-8F88-4F4B-A74D-DE13C99E7043" dmnElementRef="_75A121DC-F025-433D-92A3-F2FFE557FF54" isCollapsed="false" isListedInputData="false">
+        <dc:Bounds x="800" y="580" width="160" height="80" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="_319EE112-10F5-490E-9A48-E69447425061" dmnElementRef="_25010DFA-8B60-4D75-89D2-1F3E455B1536" isCollapsed="false" isListedInputData="false">
+        <dc:Bounds x="1000" y="580" width="160" height="80" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="_669A2623-405F-4A07-A5E0-502BA2298A0B" dmnElementRef="_FC3B7BA2-8730-426B-BCCA-3D92775C3F38" isCollapsed="false" isListedInputData="false">
+        <dc:Bounds x="1200" y="580" width="160" height="80" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="_13083BF2-259B-43FA-8CFE-67F4166DADBE" dmnElementRef="_061B6593-EC9B-4A9C-99C1-1E53AFB2B0BC" sourceElement="_7B2AC677-4804-4D26-BFC5-33F1D1F34662" targetElement="_4B645663-D617-44B2-B190-742E75858A71">
+        <di:waypoint x="380" y="480" />
+        <di:waypoint x="460" y="360" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="_034A75B5-29A5-4C6D-9418-93CA4F3505C3" dmnElementRef="_613DB6F8-55F5-46FD-A614-D4B13D9D5D9E" sourceElement="_7A4A695A-3659-4324-A177-4790EC66E893" targetElement="_4B645663-D617-44B2-B190-742E75858A71">
+        <di:waypoint x="580" y="480" />
+        <di:waypoint x="460" y="360" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="_F790585B-F896-48DB-88D7-2795C0C42E7D" dmnElementRef="_6D8B5F1D-94CA-4464-A442-57169EDDC036" sourceElement="_06ED39BD-D2BA-4707-8D48-2F3A39867861" targetElement="_7B2AC677-4804-4D26-BFC5-33F1D1F34662">
+        <di:waypoint x="540" y="640" />
+        <di:waypoint x="380" y="520" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="_92F67F68-3547-4E25-A692-C8DBFAFD4061" dmnElementRef="_42ECE64F-3E45-4DC6-851A-18E62421FDE0" sourceElement="_44002254-08B1-4F05-97D2-587E895CC50B" targetElement="_7B2AC677-4804-4D26-BFC5-33F1D1F34662">
+        <di:waypoint x="160" y="480" />
+        <di:waypoint x="300" y="480" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="_1F169D66-07A7-43AD-A061-C3E8C37DAB26" dmnElementRef="_7EEF26EF-5DA2-41DD-9B6C-F5D9C426A785" sourceElement="_06ED39BD-D2BA-4707-8D48-2F3A39867861" targetElement="_7A4A695A-3659-4324-A177-4790EC66E893">
+        <di:waypoint x="540" y="640" />
+        <di:waypoint x="580" y="520" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="_3DDC1F17-3DE0-4C06-9C9A-24884F08F9D2" dmnElementRef="_455A7CB3-4A76-4BF0-B672-547E9A1CA3DB" sourceElement="_177A507C-8F88-4F4B-A74D-DE13C99E7043" targetElement="_1EBDC89E-47D9-4F80-8056-5B38D87145B6">
+        <di:waypoint x="880" y="620" />
+        <di:waypoint x="1100" y="500" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="_BFE200F3-8BF8-49F3-BBCD-410698998D38" dmnElementRef="_3CA16DB4-B697-4B13-8A07-42DC58627633" sourceElement="_319EE112-10F5-490E-9A48-E69447425061" targetElement="_1EBDC89E-47D9-4F80-8056-5B38D87145B6">
+        <di:waypoint x="1080" y="620" />
+        <di:waypoint x="1100" y="500" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="_98B3EFAE-991F-4062-8156-12D803058DC1" dmnElementRef="_AFB3F6EE-4479-448F-B19D-D0F6A7C6FC24" sourceElement="_669A2623-405F-4A07-A5E0-502BA2298A0B" targetElement="_1EBDC89E-47D9-4F80-8056-5B38D87145B6">
+        <di:waypoint x="1280" y="620" />
+        <di:waypoint x="1100" y="500" />
+      </dmndi:DMNEdge>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>

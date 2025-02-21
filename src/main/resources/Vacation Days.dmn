@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20230324/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20230324/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" xmlns:kie="https://kie.org/dmn/extensions/1.0" expressionLanguage="https://www.omg.org/spec/DMN/20230324/FEEL/" namespace="https://kie.org/dmn/_E700EF15-766F-4B2E-908D-22949958EEF9" id="_EA278212-3F9E-4EF4-9F7E-9512CB07A51C" name="DMN_56280348-1F27-4BDE-9C88-F458BE85FB5F">
+  <inputData name="Age" id="_12FBF09B-511D-4A56-B451-EDB07D227FF2">
+    <variable name="Age" id="_5074D03B-A0B4-4BBD-82D8-4E07DC25D675" />
+  </inputData>
+  <inputData name="Years of service" id="_C8C8BA05-68E4-44FC-865C-ADD078E40557">
+    <variable name="Years of service" id="_EE9BE21B-45B6-43A2-9226-3C16E19854AB" />
+  </inputData>
+  <decision name="Base Vacation Days" id="_1655A603-758C-48CD-9666-1EB7C2B9E880">
+    <variable name="Base Vacation Days" id="_0D3183C4-AE59-44BB-9EBE-1C8ABE79700B" typeRef="number" />
+    <literalExpression id="_A7CE811E-B04C-4F57-94CD-83F1A61692F2" typeRef="number" label="Base Vacation Days">
+      <text>22</text>
+    </literalExpression>
+  </decision>
+  <decision name="Extra days case-1" id="_E209D10F-1089-4926-A456-8AA8CA0FE3DD">
+    <variable name="Extra days case-1" id="_CCAE6672-20CC-4FEE-989A-159379E885B3" typeRef="number" />
+    <informationRequirement id="_0B4EBD3C-9635-41A0-8CC6-68011D48AFF1">
+      <requiredInput href="#_12FBF09B-511D-4A56-B451-EDB07D227FF2" />
+    </informationRequirement>
+    <informationRequirement id="_E6D78E15-5247-42BC-94F4-8506902197BC">
+      <requiredInput href="#_C8C8BA05-68E4-44FC-865C-ADD078E40557" />
+    </informationRequirement>
+    <decisionTable id="_50EF538F-B573-4FD1-ABCC-7B49B95C485F" typeRef="number" hitPolicy="UNIQUE" label="Extra days case-1">
+      <input id="_E2B31F64-664D-4CF7-875E-400B4F3D94A4">
+        <inputExpression id="_5B65BD9C-B9B8-4B2C-858C-6191D0F24D30" typeRef="number">
+          <text>Age</text>
+        </inputExpression>
+      </input>
+      <input id="_3212B2DF-AEF3-44C9-93EB-CC6C1B54EFE8">
+        <inputExpression id="_38F2C5A3-09C9-4C96-B046-8CA04A330D44" typeRef="number">
+          <text>Years of service</text>
+        </inputExpression>
+      </input>
+      <output id="_0A8A9FB3-7534-4FCF-BD5D-25CE6A846E8D" name="Output-1" />
+      <annotation name="Annotations" />
+      <rule id="_DD167B78-B958-49BB-82C7-CCDE66FF4BB8">
+        <inputEntry id="_F5F2579C-2DDE-4A27-9EC5-8061F926DDC2">
+          <text>&lt;18, &gt;=60</text>
+        </inputEntry>
+        <inputEntry id="_ED96B2A4-623D-4D02-8CB7-553B88B3F6DB">
+          <text>-</text>
+        </inputEntry>
+        <outputEntry id="_7D1197C6-F2AA-49F7-85F5-D28F45DEF85B">
+          <text>5</text>
+        </outputEntry>
+        <annotationEntry>
+          <text>// Your annotations here</text>
+        </annotationEntry>
+      </rule>
+      <rule id="_31089C91-72FA-404C-A1C8-A87C072873E0">
+        <inputEntry id="_870C0E5B-A64F-41A8-8F31-D9FED53A7EA3">
+          <text>-</text>
+        </inputEntry>
+        <inputEntry id="_159A914B-F8A8-4187-AA13-877AB0C3EA47">
+          <text>&gt;=30</text>
+        </inputEntry>
+        <outputEntry id="_DD1BEECF-5B7F-460B-BBB1-0BF7A9125E16">
+          <text>7</text>
+        </outputEntry>
+        <annotationEntry>
+          <text></text>
+        </annotationEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision name="Extra days case-2" id="_25A16171-0DCC-4249-84C2-A529098B3F1B">
+    <variable name="Extra days case-2" id="_DBFF6329-3CCC-4B2A-801D-5677BF27FB77" />
+    <informationRequirement id="_FD4C8853-4EC3-4F95-A23E-9E46FDCDD4E8">
+      <requiredInput href="#_12FBF09B-511D-4A56-B451-EDB07D227FF2" />
+    </informationRequirement>
+    <informationRequirement id="_CE51E319-08CB-4498-A07C-7B56F0794A59">
+      <requiredInput href="#_C8C8BA05-68E4-44FC-865C-ADD078E40557" />
+    </informationRequirement>
+  </decision>
+  <decision name="Extra days case-3" id="_7B4C2DA7-A109-4F11-9473-184A6D867026">
+    <variable name="Extra days case-3" id="_56A2AF6E-568B-4165-AE49-301D4D4168B4" />
+    <informationRequirement id="_8B4EFA92-D899-47D3-BDF6-36EFA3EB78BB">
+      <requiredInput href="#_12FBF09B-511D-4A56-B451-EDB07D227FF2" />
+    </informationRequirement>
+    <informationRequirement id="_BA6E2811-1F8D-4F89-9721-41F437BB2C32">
+      <requiredInput href="#_C8C8BA05-68E4-44FC-865C-ADD078E40557" />
+    </informationRequirement>
+  </decision>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram id="_9AD9EBCC-697D-4B6A-90E7-FFEBDDCBE62B" name="Default DRD" useAlternativeInputDataShape="false">
+      <di:extension>
+        <kie:ComponentsWidthsExtension>
+          <kie:ComponentWidths dmnElementRef="_A7CE811E-B04C-4F57-94CD-83F1A61692F2">
+            <kie:width>190</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_50EF538F-B573-4FD1-ABCC-7B49B95C485F">
+            <kie:width>60</kie:width>
+            <kie:width>118</kie:width>
+            <kie:width>118</kie:width>
+            <kie:width>118</kie:width>
+            <kie:width>240</kie:width>
+          </kie:ComponentWidths>
+        </kie:ComponentsWidthsExtension>
+      </di:extension>
+      <dmndi:DMNShape id="_8B9CBCE2-4859-452C-9239-2CF37D6FCDFC" dmnElementRef="_12FBF09B-511D-4A56-B451-EDB07D227FF2" isCollapsed="false" isListedInputData="false">
+        <dc:Bounds x="60" y="260" width="160" height="80" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="_D1E63770-A953-4A51-863A-E8A17650C89F" dmnElementRef="_C8C8BA05-68E4-44FC-865C-ADD078E40557" isCollapsed="false" isListedInputData="false">
+        <dc:Bounds x="320" y="260" width="160" height="80" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="_4C5E674B-2EE9-49A7-8C76-85F3B500839B" dmnElementRef="_1655A603-758C-48CD-9666-1EB7C2B9E880" isCollapsed="false" isListedInputData="false">
+        <dc:Bounds x="-60" y="40" width="160" height="80" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="_A55E2046-03AE-416E-AC04-DA50349DF8E3" dmnElementRef="_E209D10F-1089-4926-A456-8AA8CA0FE3DD" isCollapsed="false" isListedInputData="false">
+        <dc:Bounds x="160" y="40" width="160" height="80" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="_1514C3E8-B414-409B-80ED-7AA1626D5EFD" dmnElementRef="_25A16171-0DCC-4249-84C2-A529098B3F1B" isCollapsed="false" isListedInputData="false">
+        <dc:Bounds x="360" y="40" width="160" height="80" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="_1C0A7ECE-9A7E-4AF5-84E8-DBB7A5A67B67" dmnElementRef="_7B4C2DA7-A109-4F11-9473-184A6D867026" isCollapsed="false" isListedInputData="false">
+        <dc:Bounds x="560" y="40" width="160" height="80" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="_4593475E-5AAB-4B1E-8969-E2C059BA1D31" dmnElementRef="_0B4EBD3C-9635-41A0-8CC6-68011D48AFF1" sourceElement="_8B9CBCE2-4859-452C-9239-2CF37D6FCDFC" targetElement="_A55E2046-03AE-416E-AC04-DA50349DF8E3">
+        <di:waypoint x="140" y="300" />
+        <di:waypoint x="240" y="120" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="_F37C3D3F-B95F-44B1-A873-BC3E9220F367" dmnElementRef="_FD4C8853-4EC3-4F95-A23E-9E46FDCDD4E8" sourceElement="_8B9CBCE2-4859-452C-9239-2CF37D6FCDFC" targetElement="_1514C3E8-B414-409B-80ED-7AA1626D5EFD">
+        <di:waypoint x="140" y="300" />
+        <di:waypoint x="440" y="120" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="_DFFB1F01-33BD-4736-A0EC-79B541289705" dmnElementRef="_8B4EFA92-D899-47D3-BDF6-36EFA3EB78BB" sourceElement="_8B9CBCE2-4859-452C-9239-2CF37D6FCDFC" targetElement="_1C0A7ECE-9A7E-4AF5-84E8-DBB7A5A67B67">
+        <di:waypoint x="140" y="300" />
+        <di:waypoint x="640" y="120" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="_3E1218DB-3910-4080-A184-25BC7E46E725" dmnElementRef="_E6D78E15-5247-42BC-94F4-8506902197BC" sourceElement="_D1E63770-A953-4A51-863A-E8A17650C89F" targetElement="_A55E2046-03AE-416E-AC04-DA50349DF8E3">
+        <di:waypoint x="400" y="300" />
+        <di:waypoint x="240" y="120" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="_A96C6832-7D7A-462C-9D8E-EE72F2D65A4E" dmnElementRef="_CE51E319-08CB-4498-A07C-7B56F0794A59" sourceElement="_D1E63770-A953-4A51-863A-E8A17650C89F" targetElement="_1514C3E8-B414-409B-80ED-7AA1626D5EFD">
+        <di:waypoint x="400" y="300" />
+        <di:waypoint x="440" y="120" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="_57F43EEB-2837-4ED4-A2CD-2AF599B3B896" dmnElementRef="_BA6E2811-1F8D-4F89-9721-41F437BB2C32" sourceElement="_D1E63770-A953-4A51-863A-E8A17650C89F" targetElement="_1C0A7ECE-9A7E-4AF5-84E8-DBB7A5A67B67">
+        <di:waypoint x="400" y="300" />
+        <di:waypoint x="640" y="120" />
+      </dmndi:DMNEdge>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>
